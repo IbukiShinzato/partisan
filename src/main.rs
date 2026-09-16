@@ -1,10 +1,13 @@
 #![no_std]
 #![no_main]
 
+use core::arch::global_asm;
 use core::panic::PanicInfo;
 
+global_asm!(include_str!("../entry.S"));
+
 #[unsafe(no_mangle)]
-pub unsafe extern "C" fn _start() -> ! {
+pub extern "C" fn kernel_main() -> ! {
     loop {}
 }
 
